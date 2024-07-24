@@ -1,0 +1,145 @@
+:root {
+	--main-color: #243d7f;
+	--text-color: #ffc300;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+.nav-bar {
+	height: 100px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	background-color: white;
+}
+
+.nav-links {
+	width: 150px;
+	height: 100%;
+	align-content: center;
+	margin-right: 20px;
+}
+
+.nav-links ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
+}
+
+.nav-links ul li {
+	display: inline;
+	margin: 0;
+	font-size: 24px;
+	text-decoration: none;
+}
+
+.nav-links ul li a {
+	text-decoration: none;
+	color: var(--text-color);
+}
+
+.logo-container {
+	margin-left: 20px;
+	width: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo-container img {
+	height: 80px;
+	width: 80px;
+}
+
+.main-banner {
+	height: 1024px;
+	background-image: url("main_banner.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.service-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.service {
+	width: 300px;
+	height: 330px;
+	background-color: var(--main-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.service img {
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+}
+
+.service h2 {
+	margin: auto;
+	font-size: 24px;
+	color: var(--text-color);
+}
+
+.footer {
+	margin: 0;
+	padding: 0;
+	height: 100px;
+	background-color: var(--main-color);
+	color: var(--text-color);
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+.footer p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 16px;
+}
+
+.action-button {
+	height: 50px;
+	width: 500px;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+	top: 60%;
+}
+
+.get-quote {
+	height: 100%;
+	width: 200px;
+	border-radius: 25px;
+	outline: 3px solid var(--text-color);
+	outline-offset: -3px;
+	font-size: 24px;
+	align-content: center;
+	text-align: center;
+	color: white;
+}
+
+.get-contact {
+	height: 100%;
+	width: 200px;
+	border-radius: 25px;
+	background-color: var(--text-color);
+	font-size: 24px;
+	align-content: center;
+	text-align: center;
+	color: black;
+}
