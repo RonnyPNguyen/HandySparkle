@@ -35,6 +35,7 @@
 			<h1 class="section-heading">Get a Quote</h1>
 
 			<!-- Cleaning Details Form -->
+			<div id="notification" style="display: none" class="alert"></div>
 			<form
 				id="quoteForm"
 				onsubmit="event.preventDefault(); calculateEstimate();"
@@ -65,11 +66,7 @@
 			<!-- Estimate Result and Personal Details Form -->
 			<div id="estimateResult" class="mt-4" style="display: none">
 				<h3>Your Estimated Rate: <span id="rate"></span></h3>
-				<form
-					id="bookingForm"
-					action="https://handy-sparkle-backend-2de7f358d4c0.herokuapp.com/send-quote"
-					method="post"
-				>
+				<form id="bookingForm">
 					<!-- Hidden fields for cleaning details -->
 					<input type="hidden" name="rate" id="rateValue" />
 					<input type="hidden" name="bedrooms" id="bedroomsValue" />
