@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Handy Sparkle</title>
 		<link rel="stylesheet" href="index.css" />
-</head>
+		<!-- Add Bootstrap CSS if needed -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		/>
+	</head>
 	<body>
-        <div class="nav-bar">
+		<div class="nav-bar">
 			<div class="logo-container">
 				<a href="index.html">
-					<img src="logo.svg" alt="" />
+					<img src="logo.svg" alt="Handy Sparkle Logo" />
 				</a>
 				<a href="index.html">
 					<h1>Handy Sparkle</h1>
@@ -22,85 +27,110 @@
 					<span class="vertical-line"></span>
 					<li><a href="about.html">About Us</a></li>
 				</ul>
-				</ul>
 			</nav>
 		</div>
-        <br>
-        <div class="container mt-5">
-            <h1 class="section-heading">Get a Quote</h1>
-    
-            <!-- Cleaning Details Form -->
-            <form id="quoteForm" onsubmit="event.preventDefault(); calculateEstimate();">
-                <div class="form-group">
-                    <label for="bedrooms">Number of Bedrooms:</label>
-                    <input type="number" class="form-control" id="bedrooms" required>
-                </div>
-                <div class="form-group">
-                    <label for="bathrooms">Number of Bathrooms:</label>
-                    <input type="number" class="form-control" id="bathrooms" required>
-                </div>
-                <div class="form-group">
-                    <label for="kitchens">Number of Kitchens:</label>
-                    <input type="number" class="form-control" id="kitchens" required>
-                </div>
-                <div class="form-group">
-                    <label for="livingRooms">Number of Living Rooms:</label>
-                    <input type="number" class="form-control" id="livingRooms" required>
-                </div>
-                <div class="form-group">
-                    <label for="serviceDate">Date of Service:</label>
-                    <input type="date" class="form-control" id="serviceDate" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Get a Quote</button>
-            </form>
-    
-            <!-- Estimate Result and Personal Details Form -->
-            <div id="estimateResult" class="mt-4" style="display:none;">
-                <h3>Your Estimated Rate: <span id="rate"></span></h3>
-                <form id="bookingForm" action="https://handy.sparkle.com.au/send-quote" method="post">
-                    <!-- Hidden fields for cleaning details -->
-                    <input type="hidden" name="rate" id="rateValue">
-                    <input type="hidden" name="bedrooms" id="bedroomsValue">
-                    <input type="hidden" name="bathrooms" id="bathroomsValue">
-                    <input type="hidden" name="kitchens" id="kitchensValue">
-                    <input type="hidden" name="livingRooms" id="livingRoomsValue">
-                    <input type="hidden" name="serviceDate" id="serviceDateValue">
-    
-                    <!-- Personal Contact Information -->
-                    <div class="form-group">
-                        <label for="customerName">Name:</label>
-                        <input type="text" class="form-control" id="customerName" name="customerName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customerPhone">Phone Number:</label>
-                        <input type="tel" class="form-control" id="customerPhone" name="customerPhone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customerEmail">Email:</label>
-                        <input type="email" class="form-control" id="customerEmail" name="customerEmail" required>
-                    </div>
-                    <button type="submit" class="btn btn-success">Secure Your Quote</button>
-                </form>
-            </div>
-        </div>
-    
-        <script src="quote.js"></script>
-        
+		<br />
+		<div class="container mt-5">
+			<h1 class="section-heading">Get a Quote</h1>
+
+			<!-- Cleaning Details Form -->
+			<form
+				id="quoteForm"
+				onsubmit="event.preventDefault(); calculateEstimate();"
+			>
+				<div class="form-group">
+					<label for="bedrooms">Number of Bedrooms:</label>
+					<input type="number" class="form-control" id="bedrooms" required />
+				</div>
+				<div class="form-group">
+					<label for="bathrooms">Number of Bathrooms:</label>
+					<input type="number" class="form-control" id="bathrooms" required />
+				</div>
+				<div class="form-group">
+					<label for="kitchens">Number of Kitchens:</label>
+					<input type="number" class="form-control" id="kitchens" required />
+				</div>
+				<div class="form-group">
+					<label for="livingRooms">Number of Living Rooms:</label>
+					<input type="number" class="form-control" id="livingRooms" required />
+				</div>
+				<div class="form-group">
+					<label for="serviceDate">Date of Service:</label>
+					<input type="date" class="form-control" id="serviceDate" required />
+				</div>
+				<button type="submit" class="btn btn-primary">Get a Quote</button>
+			</form>
+
+			<!-- Estimate Result and Personal Details Form -->
+			<div id="estimateResult" class="mt-4" style="display: none">
+				<h3>Your Estimated Rate: <span id="rate"></span></h3>
+				<form
+					id="bookingForm"
+					action="https://handy-sparkle-backend-2de7f358d4c0.herokuapp.com/send-quote"
+					method="post"
+				>
+					<!-- Hidden fields for cleaning details -->
+					<input type="hidden" name="rate" id="rateValue" />
+					<input type="hidden" name="bedrooms" id="bedroomsValue" />
+					<input type="hidden" name="bathrooms" id="bathroomsValue" />
+					<input type="hidden" name="kitchens" id="kitchensValue" />
+					<input type="hidden" name="livingRooms" id="livingRoomsValue" />
+					<input type="hidden" name="serviceDate" id="serviceDateValue" />
+
+					<!-- Personal Contact Information -->
+					<div class="form-group">
+						<label for="customerName">Name:</label>
+						<input
+							type="text"
+							class="form-control"
+							id="customerName"
+							name="customerName"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="customerPhone">Phone Number:</label>
+						<input
+							type="tel"
+							class="form-control"
+							id="customerPhone"
+							name="customerPhone"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="customerEmail">Email:</label>
+						<input
+							type="email"
+							class="form-control"
+							id="customerEmail"
+							name="customerEmail"
+							required
+						/>
+					</div>
+					<button type="submit" class="btn btn-success">
+						Secure Your Quote
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<script src="quote.js"></script>
 
 		<br />
 		<h1 class="section-heading">Our Services</h1>
 		<br />
 		<div class="service-container">
 			<div class="service">
-				<img src="house-cleaning.jpg" alt="" />
+				<img src="house-cleaning.jpg" alt="House Keeping" />
 				<h2>House Keeping</h2>
 			</div>
 			<div class="service">
-				<img src="end-of-lease.jpg" alt="" />
+				<img src="end-of-lease.jpg" alt="End of Lease" />
 				<h2>End of Lease</h2>
 			</div>
 			<div class="service">
-				<img src="office-clean.webp" alt="" />
+				<img src="office-clean.webp" alt="Office Cleaning" />
 				<h2>Office</h2>
 			</div>
 		</div>

@@ -12,7 +12,9 @@ body {
 	margin: 0;
 	padding: 0;
 }
-
+button {
+	margin: auto;
+}
 .nav-bar {
 	height: 100px;
 	width: 100%;
