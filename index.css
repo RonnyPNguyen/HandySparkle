@@ -1,3 +1,8 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
+
+* {
+	font-family: "Montserrat", sans-serif;
+}
 :root {
 	--main-color: #243d7f;
 	--text-color: #ffc300;
@@ -7,6 +12,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
 .nav-bar {
 	height: 100px;
 	width: 100%;
@@ -17,8 +23,31 @@ body {
 	background-color: white;
 }
 
+.logo-container {
+	margin-left: 20px;
+	width: 320px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo-container img {
+	height: 80px;
+	width: 80px;
+}
+
+.logo-container a {
+	text-decoration: none;
+	color: var(--main-color);
+}
+
+.logo-container h1 {
+	font-size: 30px;
+	color: var(--main-color);
+	margin: 0;
+}
+
 .nav-links {
-	width: 150px;
+	width: 320px;
 	height: 100%;
 	align-content: center;
 	margin-right: 20px;
@@ -37,24 +66,19 @@ body {
 	display: inline;
 	margin: 0;
 	font-size: 24px;
+	font-weight: bold;
 	text-decoration: none;
+	margin: 0;
 }
 
 .nav-links ul li a {
 	text-decoration: none;
-	color: var(--text-color);
+	color: var(--main-color);
 }
 
-.logo-container {
-	margin-left: 20px;
-	width: 300px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.logo-container img {
-	height: 80px;
-	width: 80px;
+.nav-links ul li a:hover {
+	color: var(--text-color);
+	text-decoration: underline;
 }
 
 .main-banner {
@@ -72,8 +96,9 @@ body {
 }
 
 .service {
-	width: 300px;
-	height: 330px;
+	margin: 0;
+	width: 30vw;
+	height: 30vw;
 	background-color: var(--main-color);
 	display: flex;
 	flex-direction: column;
@@ -82,15 +107,17 @@ body {
 }
 
 .service img {
-	height: 300px;
-	width: 300px;
+	margin: 1vw;
+	width: 28vw;
+	height: 28vw;
 	object-fit: cover;
 }
 
 .service h2 {
 	margin: auto;
-	font-size: 24px;
+	font-size: 20px;
 	color: var(--text-color);
+	margin-bottom: 1vw;
 }
 
 .footer {
@@ -121,25 +148,152 @@ body {
 	top: 60%;
 }
 
-.get-quote {
+.get-quote-btn,
+.get-contact-btn {
 	height: 100%;
 	width: 200px;
-	border-radius: 25px;
-	outline: 3px solid var(--text-color);
-	outline-offset: -3px;
 	font-size: 24px;
 	align-content: center;
 	text-align: center;
 	color: white;
+	text-decoration: none;
+	border: solid 3px var(--text-color);
+	border-radius: 20px;
+	transition: 0.2s;
 }
 
-.get-contact {
-	height: 100%;
-	width: 200px;
-	border-radius: 25px;
+.get-quote-btn:hover,
+.get-contact-btn:hover {
 	background-color: var(--text-color);
-	font-size: 24px;
-	align-content: center;
+	color: var(--main-color);
+	text-decoration: underline;
+	font-size: 30px;
+}
+
+.action-button a {
+	text-decoration: none;
+	color: white;
+}
+
+.section-heading {
 	text-align: center;
-	color: black;
+	font-size: 36px;
+	color: var(--main-color);
+	margin: 0;
+}
+.contact-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: 0;
+	padding: 0;
+	height: 30vh;
+	background-color: rgba(36, 60, 127, 1);
+}
+
+.contact {
+	margin: auto;
+	border-radius: 5px;
+	width: 80vw;
+	text-align: center;
+}
+
+.contact h2 {
+	color: var(--text-color);
+	font-size: 24px;
+	margin: 0;
+}
+
+.contact p {
+	color: var(--text-color);
+	font-size: 18px;
+	margin: 0;
+	font-size: 20px;
+}
+
+.vertical-line {
+	display: inline-block;
+	width: 2px;
+	height: 30px;
+	background-color: #ccc;
+	margin: 0 15px;
+	vertical-align: middle;
+}
+
+@media (max-width: 700px) {
+	body {
+		font-size: 14px;
+	}
+
+	.nav-bar {
+		height: 15vh;
+		flex-direction: column;
+		margin: auto;
+	}
+
+	.nav-links {
+		width: 100%;
+	}
+
+	.logo-container {
+		width: 100%;
+		flex-direction: column;
+		margin: 0;
+	}
+
+	.logo-container h1 {
+		display: none;
+	}
+
+	.logo-container a img {
+		margin: 0;
+	}
+
+	.main-banner {
+		height: 600px;
+	}
+
+	.service-container {
+		height: 100vh;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.service {
+		width: 300px;
+		height: 300px;
+	}
+
+	.service img {
+		margin: 10px;
+		height: 280px;
+		width: 280px;
+	}
+
+	.service h2 {
+		margin-bottom: 10px;
+		padding: 0;
+		font-size: 18px;
+	}
+
+	.action-button {
+		top: 65%;
+	}
+
+	.get-quote-btn,
+	.get-contact-btn {
+		width: 150px;
+		font-size: 18px;
+	}
+
+	.get-quote-btn:hover,
+	.get-contact-btn:hover {
+		background-color: var(--text-color);
+		color: var(--main-color);
+		text-decoration: underline;
+		font-size: 24px;
+	}
+	.contact {
+		width: 100vw;
+	}
 }
