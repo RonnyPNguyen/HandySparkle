@@ -57,7 +57,7 @@
             <!-- Estimate Result and Personal Details Form -->
             <div id="estimateResult" class="mt-4" style="display:none;">
                 <h3>Your Estimated Rate: <span id="rate"></span></h3>
-                <form id="bookingForm" action="http://localhost:3000/send-quote" method="post">
+                <form id="bookingForm" action="https://handy.sparkle.com.au/send-quote" method="post">
                     <!-- Hidden fields for cleaning details -->
                     <input type="hidden" name="rate" id="rateValue">
                     <input type="hidden" name="bedrooms" id="bedroomsValue">
@@ -84,28 +84,7 @@
             </div>
         </div>
     
-        <script>
-            function calculateEstimate() {
-                const bedrooms = document.getElementById('bedrooms').value;
-                const bathrooms = document.getElementById('bathrooms').value;
-                const kitchens = document.getElementById('kitchens').value;
-                const livingRooms = document.getElementById('livingRooms').value;
-    
-                // Example formula for estimation (you can adjust this)
-                const rate = (bedrooms * 50) + (bathrooms * 40) + (kitchens * 60) + (livingRooms * 30);
-    
-                document.getElementById('rate').textContent = `$${rate}`;
-                document.getElementById('rateValue').value = rate;
-                document.getElementById('bedroomsValue').value = bedrooms;
-                document.getElementById('bathroomsValue').value = bathrooms;
-                document.getElementById('kitchensValue').value = kitchens;
-                document.getElementById('livingRoomsValue').value = livingRooms;
-                document.getElementById('serviceDateValue').value = document.getElementById('serviceDate').value;
-    
-                // Display the personal details form
-                document.getElementById('estimateResult').style.display = 'block';
-            }
-        </script>
+        <script src="quote.js"></script>
         
 
 		<br />
