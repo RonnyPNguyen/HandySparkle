@@ -73,6 +73,7 @@ function calculateEstimate() {
 				oneTimeRate.kitchens.unitPrice +
 			((livingRooms * oneTimeRate.livingRooms.duration) / 60) *
 				oneTimeRate.livingRooms.unitPrice;
+		total = total.toFixed(2);
 
 		duration =
 			bedrooms * 15 + bathrooms * 25 + kitchens * 25 + livingRooms * 20;
