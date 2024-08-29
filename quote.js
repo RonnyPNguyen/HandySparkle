@@ -36,21 +36,23 @@ var regularRate = {
 };
 
 function calculateEstimate() {
-	const serviceType = document.querySelector(
-		'input[name="serviceType"]:checked'
-	).value;
+	const serviceTypeElement = document.getElementById("serviceType");
+	const serviceType = serviceTypeElement.value;
 	const bedrooms = document.getElementById("bedrooms").value;
 	const bathrooms = document.getElementById("bathrooms").value;
 	const kitchens = document.getElementById("kitchens").value;
 	const livingRooms = document.getElementById("livingRooms").value;
 	const serviceDate = document.getElementById("serviceDate").value;
 
-	console.log(serviceType);
-
 	if (bedrooms < 0 || bathrooms < 0 || kitchens < 0 || livingRooms < 0) {
 		showNotification("Please enter valid non-negative values.", "danger");
 		return;
 	}
+
+	serviceTypeElement.addEventListener("change", (event) => {
+		var selectedServiceType = event.target.value;
+		console.log(`Selected service type: ${selectedServiceType}`);
+	});
 
 	document.addEventListener("DOMContentLoaded", function () {
 		var today = new Date().toISOString().split("T")[0];
@@ -99,14 +101,7 @@ function calculateEstimate() {
 	}
 	rate = Math.round(rate * 100) / 100;
 
-	if (serviceType === "One time cleaning") {
-		document.getElementById("serviceTypeValue").textContent =
-			"One time cleaning";
-	} else if (serviceType === "Regular cleaning") {
-		document.getElementById("serviceTypeValue").textContent =
-			"Regular cleaning";
-	}
-
+	document.getElementById("serviceTypeValue").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
 	document.getElementById("duration").textContent = `${duration} minutes`;
 	document.getElementById("rate").textContent = `AU$${rate}`;
