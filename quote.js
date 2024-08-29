@@ -100,8 +100,7 @@ function calculateEstimate() {
 		rate = total / (duration / 60);
 	}
 	rate = Math.round(rate * 100) / 100;
-
-	document.getElementById("serviceTypeValue").textContent = serviceType;
+	document.getElementById("service").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
 	document.getElementById("duration").textContent = `${duration} minutes`;
 	document.getElementById("rate").textContent = `AU$${rate}`;
@@ -109,6 +108,7 @@ function calculateEstimate() {
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
 
+	document.getElementById("serviceTypeValue").value = serviceType;
 	document.getElementById("bedroomsValue").value = bedrooms;
 	document.getElementById("bathroomsValue").value = bathrooms;
 	document.getElementById("kitchensValue").value = kitchens;
