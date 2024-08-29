@@ -146,7 +146,10 @@ document
 			);
 
 			if (response.ok) {
-				showNotification("Quote request sent successfully.", "success");
+				showNotification(
+					"Quote request sent successfully. We will be in touch soon!",
+					"success"
+				);
 			} else {
 				showNotification(
 					"Failed to send quote request. Please try again.",
