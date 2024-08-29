@@ -240,6 +240,11 @@ button {
 	vertical-align: middle;
 }
 
+#estimateResult h3 span {
+	color: var(--main-color);
+	font-weight: bold;
+}
+
 @media (max-width: 700px) {
 	body {
 		font-size: 14px;
@@ -331,5 +336,9 @@ button {
 		color: var(--main-color);
 		text-decoration: underline;
 		font-size: 24px;
+	}
+
+	#estimateResult h3 {
+		font-size: 14px;
 	}
 }

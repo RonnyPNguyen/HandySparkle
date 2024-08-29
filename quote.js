@@ -103,7 +103,7 @@ function calculateEstimate() {
 	document.getElementById("service").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
 	document.getElementById("duration").textContent = `${duration} minutes`;
-	document.getElementById("rate").textContent = `AU$${rate}`;
+	document.getElementById("rate").textContent = `AU$${rate} per hour`;
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
@@ -169,6 +169,11 @@ document
 				"Failed to send quote request. Please try again.",
 				"danger"
 			);
+			document
+				.getElementById("contactButton")
+				.addEventListener("click", function () {
+					window.location.href = "index.html#contact";
+				});
 		}
 	});
 

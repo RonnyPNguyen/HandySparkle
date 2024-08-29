@@ -6,11 +6,6 @@
 		<title>Handy Sparkle</title>
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="index.css" />
-		<!-- Add Bootstrap CSS if needed -->
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		/>
 	</head>
 	<body>
 		<div class="nav-bar">
@@ -32,10 +27,9 @@
 		</div>
 		<br />
 		<div class="container mt-5">
-			<h1 class="section-heading">Get a Quote</h1>
-
+			<h1 class="section-heading">Get A Free Quote</h1>
+			<br />
 			<!-- Cleaning Details Form -->
-			<div id="notification" style="display: none" class="alert"></div>
 			<form
 				id="quoteForm"
 				onsubmit="event.preventDefault(); calculateEstimate();"
@@ -92,17 +86,17 @@
 					<label for="serviceDate">Date of Service:</label>
 					<input type="date" class="form-control" id="serviceDate" required />
 				</div>
-				<button type="submit" class="btn btn-primary">Get a Quote</button>
+				<button type="submit" class="btn btn-primary">Instant Quote</button>
 			</form>
 
 			<!-- Estimate Result and Personal Details Form -->
 			<div id="estimateResult" class="mt-4" style="display: none">
 				<h3>Selected Service: <span id="service"></span></h3>
 				<h3 id="estimatedTotal">
-					Your Estimated Total: <span id="total"></span> and Duration:
+					Estimated Total: <span id="total"></span> and Duration:
 					<span id="duration"></span>
 				</h3>
-				<h3>Estimated Rate: <span id="rate"></span> per hour</h3>
+				<h3>Estimated Rate: <span id="rate"></span></h3>
 				<form id="bookingForm">
 					<!-- Hidden fields for cleaning details -->
 					<input type="hidden" name="serviceType" id="serviceTypeValue" />
@@ -146,10 +140,22 @@
 							required
 						/>
 					</div>
+					<div class="form-group">
+						<label for="specialRequest">Special Request:</label>
+						<textarea
+							class="form-control"
+							id="specialRequest"
+							name="specialRequest"
+							rows="3"
+						></textarea>
+					</div>
 					<button type="submit" class="btn btn-success">
 						Secure Your Quote
 					</button>
 				</form>
+				<br />
+				<div id="notification" style="display: none" class="alert"></div>
+				<br />
 			</div>
 		</div>
 
