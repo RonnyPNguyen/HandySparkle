@@ -41,20 +41,67 @@
 				onsubmit="event.preventDefault(); calculateEstimate();"
 			>
 				<div class="form-group">
+					<label for="serviceType">Type of Service:</label>
+					<div>
+						<input
+							type="radio"
+							id="oneTimeCleaning"
+							name="serviceType"
+							value="One time cleaning"
+							required
+						/>
+						<label for="oneTimeCleaning">One time cleaning</label>
+					</div>
+					<div>
+						<input
+							type="radio"
+							id="regularCleaning"
+							name="serviceType"
+							value="Regular cleaning"
+							required
+						/>
+						<label for="regularCleaning">Regular cleaning</label>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="bedrooms">Number of Bedrooms:</label>
-					<input type="number" class="form-control" id="bedrooms" required />
+					<input
+						type="number"
+						class="form-control"
+						id="bedrooms"
+						min="0"
+						required
+					/>
 				</div>
 				<div class="form-group">
 					<label for="bathrooms">Number of Bathrooms:</label>
-					<input type="number" class="form-control" id="bathrooms" required />
+					<input
+						type="number"
+						class="form-control"
+						id="bathrooms"
+						min="0"
+						required
+					/>
 				</div>
 				<div class="form-group">
 					<label for="kitchens">Number of Kitchens:</label>
-					<input type="number" class="form-control" id="kitchens" required />
+					<input
+						type="number"
+						class="form-control"
+						id="kitchens"
+						min="0"
+						required
+					/>
 				</div>
 				<div class="form-group">
 					<label for="livingRooms">Number of Living Rooms:</label>
-					<input type="number" class="form-control" id="livingRooms" required />
+					<input
+						type="number"
+						class="form-control"
+						id="livingRooms"
+						min="0"
+						required
+					/>
 				</div>
 				<div class="form-group">
 					<label for="serviceDate">Date of Service:</label>
@@ -65,9 +112,16 @@
 
 			<!-- Estimate Result and Personal Details Form -->
 			<div id="estimateResult" class="mt-4" style="display: none">
-				<h3>Your Estimated Rate: <span id="rate"></span></h3>
+				<h3 id="estimatedTotal">
+					Your Estimated Total: <span id="total"></span> and Duration:
+					<span id="duration"></span>
+				</h3>
+				<h3>Estimated Rate: <span id="rate"></span> per hour</h3>
 				<form id="bookingForm">
 					<!-- Hidden fields for cleaning details -->
+					<input type="hidden" name="type" id="typeValue" />
+					<input type="hidden" name="total" id="totalValue" />
+					<input type="hidden" name="duration" id="durationValue" />
 					<input type="hidden" name="rate" id="rateValue" />
 					<input type="hidden" name="bedrooms" id="bedroomsValue" />
 					<input type="hidden" name="bathrooms" id="bathroomsValue" />

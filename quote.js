@@ -1,14 +1,106 @@
+var oneTimeRate = {
+	bedrooms: {
+		duration: 15, // per room
+		unitPrice: 50, // per hour
+	},
+	bathrooms: {
+		duration: 25, // per room
+		unitPrice: 55, // per hour
+	},
+	kitchens: {
+		duration: 25, // per room
+		unitPrice: 55, // per hour
+	},
+	livingRooms: {
+		duration: 20, // per room
+		unitPrice: 45, // per hour
+	},
+};
+var regularRate = {
+	bedrooms: {
+		duration: 15, // per room
+		unitPrice: 45, // per hour
+	},
+	bathrooms: {
+		duration: 20, // per room
+		unitPrice: 50, // per hour
+	},
+	kitchens: {
+		duration: 25, // per room
+		unitPrice: 50, // per hour
+	},
+	livingRooms: {
+		duration: 15, // per room
+		unitPrice: 40, // per hour
+	},
+};
+
 function calculateEstimate() {
 	const bedrooms = document.getElementById("bedrooms").value;
 	const bathrooms = document.getElementById("bathrooms").value;
 	const kitchens = document.getElementById("kitchens").value;
 	const livingRooms = document.getElementById("livingRooms").value;
+	const serviceDate = document.getElementById("serviceDate").value;
+	var serviceType = document.querySelector(
+		'input[name="serviceType"]:checked'
+	).value;
 
-	// Example formula for estimation (you can adjust this)
-	const rate =
-		bedrooms * 50 + bathrooms * 40 + kitchens * 60 + livingRooms * 30;
+	if (bedrooms < 0 || bathrooms < 0 || kitchens < 0 || livingRooms < 0) {
+		showNotification("Please enter valid non-negative values.", "danger");
+		return;
+	}
 
-	document.getElementById("rate").textContent = `$${rate}`;
+	document.addEventListener("DOMContentLoaded", function () {
+		var today = new Date().toISOString().split("T")[0];
+		document.getElementById("serviceDate").setAttribute("min", today);
+	});
+
+	var today = new Date().toISOString().split("T")[0];
+	if (serviceDate < today) {
+		showNotification("Please select a valid date (today or later).", "danger");
+		return; // Exit the function if validation fails
+	}
+
+	var total, duration, rate;
+
+	if (serviceType === "One time cleaning") {
+		total =
+			((bedrooms * oneTimeRate.bedrooms.duration) / 60) *
+				oneTimeRate.bedrooms.unitPrice +
+			((bathrooms * oneTimeRate.bathrooms.duration) / 60) *
+				oneTimeRate.bathrooms.unitPrice +
+			((kitchens * oneTimeRate.kitchens.duration) / 60) *
+				oneTimeRate.kitchens.unitPrice +
+			((livingRooms * oneTimeRate.livingRooms.duration) / 60) *
+				oneTimeRate.livingRooms.unitPrice;
+
+		duration =
+			bedrooms * 15 + bathrooms * 25 + kitchens * 25 + livingRooms * 20;
+
+		rate = total / (duration / 60);
+	} else if (serviceType === "Regular cleaning") {
+		total =
+			((bedrooms * regularRate.bedrooms.duration) / 60) *
+				regularRate.bedrooms.unitPrice +
+			((bathrooms * regularRate.bathrooms.duration) / 60) *
+				regularRate.bathrooms.unitPrice +
+			((kitchens * regularRate.kitchens.duration) / 60) *
+				regularRate.kitchens.unitPrice +
+			((livingRooms * regularRate.livingRooms.duration) / 60) *
+				regularRate.livingRooms.unitPrice;
+
+		duration =
+			bedrooms * 15 + bathrooms * 20 + kitchens * 25 + livingRooms * 15;
+
+		rate = total / (duration / 60);
+	}
+
+	document.getElementById("total").textContent = `AU$${total.toFixed(2)}`;
+	document.getElementById("duration").textContent = `${duration} minutes`;
+	document.getElementById("rate").textContent = `AU$${rate.toFixed(2)}`;
+	document.getElementById("typeValue").value = serviceType;
+	document.getElementById("totalValue").value = total;
+	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
 	document.getElementById("bedroomsValue").value = bedrooms;
 	document.getElementById("bathroomsValue").value = bathrooms;
@@ -18,7 +110,14 @@ function calculateEstimate() {
 		document.getElementById("serviceDate").value;
 
 	// Display the personal details form
-	document.getElementById("estimateResult").style.display = "block";
+
+	if (serviceType === "Regular cleaning") {
+		document.getElementById("estimateResult").style.display = "block";
+		document.getElementById("estimatedTotal").style.display = "none";
+	} else if (serviceType === "One time cleaning") {
+		document.getElementById("estimateResult").style.display = "block";
+		document.getElementById("estimatedTotal").style.display = "block";
+	}
 }
 
 // Handle AJAX submission of the booking form
