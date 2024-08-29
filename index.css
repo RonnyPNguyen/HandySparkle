@@ -219,6 +219,18 @@ button {
 	font-size: 20px;
 }
 
+.phone-link {
+	color: yellow; /* Your desired color */
+	font-size: inherit; /* Inherits the font size from the parent */
+	text-decoration: none; /* Removes underline */
+}
+
+.phone-link:hover,
+.phone-link:focus {
+	color: yellow; /* Ensure the color remains yellow on hover/focus */
+	text-decoration: underline; /* Optional: Add underline on hover/focus if desired */
+}
+
 .vertical-line {
 	display: inline-block;
 	width: 2px;
