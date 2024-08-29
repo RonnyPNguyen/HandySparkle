@@ -36,14 +36,16 @@ var regularRate = {
 };
 
 function calculateEstimate() {
+	const serviceType = document.querySelector(
+		'input[name="serviceType"]:checked'
+	).value;
 	const bedrooms = document.getElementById("bedrooms").value;
 	const bathrooms = document.getElementById("bathrooms").value;
 	const kitchens = document.getElementById("kitchens").value;
 	const livingRooms = document.getElementById("livingRooms").value;
 	const serviceDate = document.getElementById("serviceDate").value;
-	var serviceType = document.querySelector(
-		'input[name="serviceType"]:checked'
-	).value;
+
+	console.log(serviceType);
 
 	if (bedrooms < 0 || bathrooms < 0 || kitchens < 0 || livingRooms < 0) {
 		showNotification("Please enter valid non-negative values.", "danger");
@@ -73,7 +75,7 @@ function calculateEstimate() {
 				oneTimeRate.kitchens.unitPrice +
 			((livingRooms * oneTimeRate.livingRooms.duration) / 60) *
 				oneTimeRate.livingRooms.unitPrice;
-		total = total.toFixed(2);
+		total = Math.round(total * 100) / 100;
 
 		duration =
 			bedrooms * 15 + bathrooms * 25 + kitchens * 25 + livingRooms * 20;
@@ -95,14 +97,23 @@ function calculateEstimate() {
 
 		rate = total / (duration / 60);
 	}
+	rate = Math.round(rate * 100) / 100;
 
-	document.getElementById("total").textContent = `AU$${total.toFixed(2)}`;
+	if (serviceType === "One time cleaning") {
+		document.getElementById("serviceTypeValue").textContent =
+			"One time cleaning";
+	} else if (serviceType === "Regular cleaning") {
+		document.getElementById("serviceTypeValue").textContent =
+			"Regular cleaning";
+	}
+
+	document.getElementById("total").textContent = `AU$${total}`;
 	document.getElementById("duration").textContent = `${duration} minutes`;
-	document.getElementById("rate").textContent = `AU$${rate.toFixed(2)}`;
-	document.getElementById("typeValue").value = serviceType;
+	document.getElementById("rate").textContent = `AU$${rate}`;
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
+
 	document.getElementById("bedroomsValue").value = bedrooms;
 	document.getElementById("bathroomsValue").value = bathrooms;
 	document.getElementById("kitchensValue").value = kitchens;
