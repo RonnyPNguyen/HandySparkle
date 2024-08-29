@@ -1,11 +1,21 @@
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
 
+html {
+	scroll-behavior: smooth;
+}
+
 * {
 	font-family: "Montserrat", sans-serif;
 }
 :root {
 	--main-color: #243d7f;
 	--text-color: #ffc300;
+}
+
+h1,
+h2,
+h3 {
+	color: var(--main-color);
 }
 
 body {
@@ -139,12 +149,16 @@ button {
 	text-align: center;
 	font-size: 16px;
 }
-.home-page-decripton {
+.home-page-description {
 	margin: auto;
 	width: 500px;
 	color: white;
 	position: relative;
 	top: 60%;
+}
+
+.home-page-description p {
+	text-align: center;
 }
 .action-button {
 	height: 50px;
@@ -153,7 +167,7 @@ button {
 	display: flex;
 	justify-content: space-around;
 	position: relative;
-	top: 75%;
+	top: 70%;
 }
 
 .get-quote-btn,
@@ -220,13 +234,24 @@ button {
 }
 
 .phone-link {
-	color: yellow; /* Your desired color */
+	color: var(--text-color); /* Your desired color */
 	font-size: inherit; /* Inherits the font size from the parent */
 	text-decoration: none; /* Removes underline */
 }
 
 .phone-link:hover,
 .phone-link:focus {
+	color: yellow; /* Ensure the color remains yellow on hover/focus */
+	text-decoration: underline; /* Optional: Add underline on hover/focus if desired */
+}
+
+.email-link {
+	color: var(--text-color); /* Your desired color */
+	font-size: inherit; /* Inherits the font size from the parent */
+	text-decoration: none; /* Removes underline */
+}
+.email-link:hover,
+.email-link:focus {
 	color: yellow; /* Ensure the color remains yellow on hover/focus */
 	text-decoration: underline; /* Optional: Add underline on hover/focus if desired */
 }
@@ -301,8 +326,11 @@ button {
 		padding: 0;
 		font-size: 16px;
 	}
-	.home-page-decripton {
+	.home-page-description {
 		width: 90vw;
+	}
+	.home-page-description p {
+		font-size: 12px;
 	}
 	.action-button {
 		top: 65%;
