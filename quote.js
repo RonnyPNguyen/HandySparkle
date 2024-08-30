@@ -103,7 +103,7 @@ function calculateEstimate() {
 	document.getElementById("service").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
 	document.getElementById("duration").textContent = `${duration} minutes`;
-	document.getElementById("rate").textContent = `AU$${rate} per hour`;
+	// document.getElementById("rate").textContent = `AU$${rate} per hour`;
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
@@ -118,13 +118,14 @@ function calculateEstimate() {
 
 	// Display the personal details form
 
-	if (serviceType === "Regular cleaning") {
-		document.getElementById("estimateResult").style.display = "block";
-		document.getElementById("estimatedTotal").style.display = "none";
-	} else if (serviceType === "One time cleaning") {
-		document.getElementById("estimateResult").style.display = "block";
-		document.getElementById("estimatedTotal").style.display = "block";
-	}
+	document.getElementById("estimateResult").style.display = "block";
+	// if (serviceType === "Regular cleaning") {
+	// 	document.getElementById("estimateResult").style.display = "block";
+	// 	document.getElementById("estimatedTotal").style.display = "none";
+	// } else if (serviceType === "One time cleaning") {
+	// 	document.getElementById("estimateResult").style.display = "block";
+	// 	document.getElementById("estimatedTotal").style.display = "block";
+	// }
 }
 
 // Handle AJAX submission of the booking form
