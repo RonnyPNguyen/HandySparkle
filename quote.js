@@ -124,13 +124,14 @@ function calculateEstimate() {
 			kitchens * regularRate.kitchens.duration +
 			livingRooms * regularRate.livingRooms.duration +
 			floors * regularRate.floors.duration;
-
 		rate = total / (duration / 60);
 	}
+
 	rate = Math.round(rate * 100) / 100;
+	duration = Math.round((duration / 60) * 100) / 100;
 	document.getElementById("service").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
-	document.getElementById("duration").textContent = `${duration} minutes`;
+	document.getElementById("duration").textContent = `${duration} Hours`;
 	// document.getElementById("rate").textContent = `AU$${rate} per hour`;
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
