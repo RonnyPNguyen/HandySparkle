@@ -1,37 +1,45 @@
 var oneTimeRate = {
 	bedrooms: {
-		duration: 15, // per room
-		unitPrice: 50, // per hour
-	},
-	bathrooms: {
-		duration: 25, // per room
+		duration: 45, // per room
 		unitPrice: 55, // per hour
 	},
+	bathrooms: {
+		duration: 45, // per room
+		unitPrice: 65, // per hour
+	},
 	kitchens: {
-		duration: 25, // per room
+		duration: 50, // per room
 		unitPrice: 55, // per hour
 	},
 	livingRooms: {
-		duration: 20, // per room
-		unitPrice: 45, // per hour
+		duration: 45, // per room
+		unitPrice: 60, // per hour
+	},
+	floors: {
+		duration: 45, // per room
+		unitPrice: 55, // per hour
 	},
 };
 var regularRate = {
 	bedrooms: {
-		duration: 15, // per room
-		unitPrice: 45, // per hour
+		duration: 35, // per room
+		unitPrice: 50, // per hour
 	},
 	bathrooms: {
-		duration: 20, // per room
-		unitPrice: 50, // per hour
+		duration: 30, // per room
+		unitPrice: 55, // per hour
 	},
 	kitchens: {
-		duration: 25, // per room
-		unitPrice: 50, // per hour
+		duration: 45, // per room
+		unitPrice: 45, // per hour
 	},
 	livingRooms: {
-		duration: 15, // per room
-		unitPrice: 40, // per hour
+		duration: 30, // per room
+		unitPrice: 50, // per hour
+	},
+	floors: {
+		duration: 30, // per room
+		unitPrice: 30, // per hour
 	},
 };
 
@@ -42,9 +50,16 @@ function calculateEstimate() {
 	const bathrooms = document.getElementById("bathrooms").value;
 	const kitchens = document.getElementById("kitchens").value;
 	const livingRooms = document.getElementById("livingRooms").value;
+	const floors = document.getElementById("floors").value;
 	const serviceDate = document.getElementById("serviceDate").value;
 
-	if (bedrooms < 0 || bathrooms < 0 || kitchens < 0 || livingRooms < 0) {
+	if (
+		bedrooms < 0 ||
+		bathrooms < 0 ||
+		kitchens < 0 ||
+		livingRooms < 0 ||
+		floors < 0
+	) {
 		showNotification("Please enter valid non-negative values.", "danger");
 		return;
 	}
@@ -76,11 +91,17 @@ function calculateEstimate() {
 			((kitchens * oneTimeRate.kitchens.duration) / 60) *
 				oneTimeRate.kitchens.unitPrice +
 			((livingRooms * oneTimeRate.livingRooms.duration) / 60) *
-				oneTimeRate.livingRooms.unitPrice;
-		total = Math.round(total * 100) / 100;
+				oneTimeRate.livingRooms.unitPrice +
+			((floors * oneTimeRate.floors.duration) / 60) *
+				oneTimeRate.floors.unitPrice;
 
+		total = Math.round(total * 100) / 100;
 		duration =
-			bedrooms * 15 + bathrooms * 25 + kitchens * 25 + livingRooms * 20;
+			bedrooms * oneTimeRate.bedrooms.duration +
+			bathrooms * oneTimeRate.bathrooms.duration +
+			kitchens * oneTimeRate.kitchens.duration +
+			livingRooms * oneTimeRate.livingRooms.duration +
+			floors * oneTimeRate.floors.duration;
 
 		rate = total / (duration / 60);
 	} else if (serviceType === "Regular cleaning") {
@@ -92,10 +113,17 @@ function calculateEstimate() {
 			((kitchens * regularRate.kitchens.duration) / 60) *
 				regularRate.kitchens.unitPrice +
 			((livingRooms * regularRate.livingRooms.duration) / 60) *
-				regularRate.livingRooms.unitPrice;
+				regularRate.livingRooms.unitPrice +
+			((floors * regularRate.floors.duration) / 60) *
+				regularRate.floors.unitPrice;
 
+		total = Math.round(total * 100) / 100;
 		duration =
-			bedrooms * 15 + bathrooms * 20 + kitchens * 25 + livingRooms * 15;
+			bedrooms * regularRate.bedrooms.duration +
+			bathrooms * regularRate.bathrooms.duration +
+			kitchens * regularRate.kitchens.duration +
+			livingRooms * regularRate.livingRooms.duration +
+			floors * regularRate.floors.duration;
 
 		rate = total / (duration / 60);
 	}
@@ -113,6 +141,7 @@ function calculateEstimate() {
 	document.getElementById("bathroomsValue").value = bathrooms;
 	document.getElementById("kitchensValue").value = kitchens;
 	document.getElementById("livingRoomsValue").value = livingRooms;
+	document.getElementById("floorsValue").value = floors;
 	document.getElementById("serviceDateValue").value =
 		document.getElementById("serviceDate").value;
 

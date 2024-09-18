@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-Y1QKWFH7YE"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-Y1QKWFH7YE");
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Handy Sparkle</title>
@@ -83,6 +97,16 @@
 					/>
 				</div>
 				<div class="form-group">
+					<label for="floors">Number of Floors:</label>
+					<input
+						type="number"
+						class="form-control"
+						id="floors"
+						min="1"
+						required
+					/>
+				</div>
+				<div class="form-group">
 					<label for="serviceDate">Date of Service:</label>
 					<input type="date" class="form-control" id="serviceDate" required />
 				</div>
@@ -107,6 +131,7 @@
 					<input type="hidden" name="bathrooms" id="bathroomsValue" />
 					<input type="hidden" name="kitchens" id="kitchensValue" />
 					<input type="hidden" name="livingRooms" id="livingRoomsValue" />
+					<input type="hidden" name="floors" id="floorsValue" />
 					<input type="hidden" name="serviceDate" id="serviceDateValue" />
 
 					<!-- Personal Contact Information -->
