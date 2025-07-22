@@ -1,45 +1,89 @@
-var oneTimeRate = {
+var deepCleaningRate = {
 	bedrooms: {
-		duration: 45, // per room
-		unitPrice: 55, // per hour
+		duration: 45, // minute per room
+		unitPrice: 60, // AUD per hour
 	},
 	bathrooms: {
-		duration: 45, // per room
-		unitPrice: 65, // per hour
+		duration: 45, // minute per room
+		unitPrice: 65, // AUD per hour
 	},
 	kitchens: {
-		duration: 50, // per room
-		unitPrice: 55, // per hour
+		duration: 50, // minute per room
+		unitPrice: 60, // AUD per hour
 	},
 	livingRooms: {
-		duration: 45, // per room
-		unitPrice: 60, // per hour
+		duration: 45, // minute per room
+		unitPrice: 60, // AUD per hour
 	},
 	floors: {
-		duration: 45, // per room
-		unitPrice: 55, // per hour
+		duration: 45, // minute per room
+		unitPrice: 60, // AUD per hour
 	},
 };
-var regularRate = {
+var oneTimeRate = {
 	bedrooms: {
-		duration: 35, // per room
-		unitPrice: 50, // per hour
+		duration: 45, // minute per room
+		unitPrice: 50, // AUD per hour
 	},
 	bathrooms: {
-		duration: 30, // per room
-		unitPrice: 55, // per hour
+		duration: 45, // minute per room
+		unitPrice: 55, // AUD per hour
 	},
 	kitchens: {
-		duration: 45, // per room
-		unitPrice: 45, // per hour
+		duration: 50, // minute per room
+		unitPrice: 50, // AUD per hour
 	},
 	livingRooms: {
-		duration: 30, // per room
-		unitPrice: 50, // per hour
+		duration: 45, // minute per room
+		unitPrice: 50, // AUD per hour
 	},
 	floors: {
-		duration: 30, // per room
-		unitPrice: 30, // per hour
+		duration: 45, // minute per room
+		unitPrice: 50, // AUD per hour
+	},
+};
+var endOfLeaseRate = {
+	bedrooms: {
+		duration: 50, // minute per room
+		unitPrice: 60, // AUD per hour
+	},
+	bathrooms: {
+		duration: 55, // minute per room
+		unitPrice: 65, // AUD per hour
+	},
+	kitchens: {
+		duration: 55, // minute per room
+		unitPrice: 65, // AUD per hour
+	},
+	livingRooms: {
+		duration: 50, // minute per room
+		unitPrice: 60, // AUD per hour
+	},
+	floors: {
+		duration: 55, // minute per room
+		unitPrice: 60, // AUD per hour
+	},
+};
+var newOpeningRate = {
+	bedrooms: {
+		duration: 40, // minute per room
+		unitPrice: 50, // AUD per hour
+	},
+	bathrooms: {
+		duration: 45, // minute per room
+		unitPrice: 55, // AUD per hour
+	},
+	kitchens: {
+		duration: 45, // minute per room
+		unitPrice: 50, // AUD per hour
+	},
+	livingRooms: {
+		duration: 45, // minute per room
+		unitPrice: 60, // AUD per hour
+	},
+	floors: {
+		duration: 45, // minute per room
+		unitPrice: 50, // AUD per hour
 	},
 };
 
@@ -82,7 +126,7 @@ function calculateEstimate() {
 
 	var total, duration, rate;
 
-	if (serviceType === "One time cleaning") {
+	if (serviceType === "One Time Cleaning") {
 		total =
 			((bedrooms * oneTimeRate.bedrooms.duration) / 60) *
 				oneTimeRate.bedrooms.unitPrice +
@@ -104,35 +148,82 @@ function calculateEstimate() {
 			floors * oneTimeRate.floors.duration;
 
 		rate = total / (duration / 60);
-	} else if (serviceType === "Regular cleaning") {
+	}
+	if (serviceType === "Deep Cleaning") {
 		total =
-			((bedrooms * regularRate.bedrooms.duration) / 60) *
-				regularRate.bedrooms.unitPrice +
-			((bathrooms * regularRate.bathrooms.duration) / 60) *
-				regularRate.bathrooms.unitPrice +
-			((kitchens * regularRate.kitchens.duration) / 60) *
-				regularRate.kitchens.unitPrice +
-			((livingRooms * regularRate.livingRooms.duration) / 60) *
-				regularRate.livingRooms.unitPrice +
-			((floors * regularRate.floors.duration) / 60) *
-				regularRate.floors.unitPrice;
+			((bedrooms * deepCleaningRate.bedrooms.duration) / 60) *
+				deepCleaningRate.bedrooms.unitPrice +
+			((bathrooms * deepCleaningRate.bathrooms.duration) / 60) *
+				deepCleaningRate.bathrooms.unitPrice +
+			((kitchens * deepCleaningRate.kitchens.duration) / 60) *
+				deepCleaningRate.kitchens.unitPrice +
+			((livingRooms * deepCleaningRate.livingRooms.duration) / 60) *
+				deepCleaningRate.livingRooms.unitPrice +
+			((floors * deepCleaningRate.floors.duration) / 60) *
+				deepCleaningRate.floors.unitPrice;
 
 		total = Math.round(total * 100) / 100;
 		duration =
-			bedrooms * regularRate.bedrooms.duration +
-			bathrooms * regularRate.bathrooms.duration +
-			kitchens * regularRate.kitchens.duration +
-			livingRooms * regularRate.livingRooms.duration +
-			floors * regularRate.floors.duration;
+			bedrooms * deepCleaningRate.bedrooms.duration +
+			bathrooms * deepCleaningRate.bathrooms.duration +
+			kitchens * deepCleaningRate.kitchens.duration +
+			livingRooms * deepCleaningRate.livingRooms.duration +
+			floors * deepCleaningRate.floors.duration;
+		rate = total / (duration / 60);
+	}
+	if (serviceType === "End Of Lease Cleaning") {
+		total =
+			((bedrooms * endOfLeaseRate.bedrooms.duration) / 60) *
+				endOfLeaseRate.bedrooms.unitPrice +
+			((bathrooms * endOfLeaseRate.bathrooms.duration) / 60) *
+				endOfLeaseRate.bathrooms.unitPrice +
+			((kitchens * endOfLeaseRate.kitchens.duration) / 60) *
+				endOfLeaseRate.kitchens.unitPrice +
+			((livingRooms * endOfLeaseRate.livingRooms.duration) / 60) *
+				endOfLeaseRate.livingRooms.unitPrice +
+			((floors * endOfLeaseRate.floors.duration) / 60) *
+				endOfLeaseRate.floors.unitPrice;
+
+		total = Math.round(total * 100) / 100;
+		duration =
+			bedrooms * endOfLeaseRate.bedrooms.duration +
+			bathrooms * endOfLeaseRate.bathrooms.duration +
+			kitchens * endOfLeaseRate.kitchens.duration +
+			livingRooms * endOfLeaseRate.livingRooms.duration +
+			floors * endOfLeaseRate.floors.duration;
+		rate = total / (duration / 60);
+	}
+	if (serviceType === "New Opening House/Office Cleaning") {
+		total =
+			((bedrooms * newOpeningRate.bedrooms.duration) / 60) *
+				newOpeningRate.bedrooms.unitPrice +
+			((bathrooms * newOpeningRate.bathrooms.duration) / 60) *
+				newOpeningRate.bathrooms.unitPrice +
+			((kitchens * newOpeningRate.kitchens.duration) / 60) *
+				newOpeningRate.kitchens.unitPrice +
+			((livingRooms * newOpeningRate.livingRooms.duration) / 60) *
+				newOpeningRate.livingRooms.unitPrice +
+			((floors * newOpeningRate.floors.duration) / 60) *
+				newOpeningRate.floors.unitPrice;
+
+		total = Math.round(total * 100) / 100;
+		duration =
+			bedrooms * newOpeningRate.bedrooms.duration +
+			bathrooms * newOpeningRate.bathrooms.duration +
+			kitchens * newOpeningRate.kitchens.duration +
+			livingRooms * newOpeningRate.livingRooms.duration +
+			floors * newOpeningRate.floors.duration;
 		rate = total / (duration / 60);
 	}
 
 	rate = Math.round(rate * 100) / 100;
-	duration = Math.round((duration / 60) * 100) / 100;
+	var durationHour = Math.floor(duration / 60);
+	var durationMinute = Math.round((duration % 60) * 100) / 100;
 	document.getElementById("service").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
-	document.getElementById("duration").textContent = `${duration} Hours`;
-	// document.getElementById("rate").textContent = `AU$${rate} per hour`;
+	document.getElementById(
+		"duration"
+	).textContent = `${durationHour} Hours and ${durationMinute} Minutes`;
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
@@ -158,7 +249,6 @@ function calculateEstimate() {
 	// }
 }
 
-// Handle AJAX submission of the booking form
 document
 	.getElementById("bookingForm")
 	.addEventListener("submit", async function (e) {
@@ -172,16 +262,13 @@ document
 		});
 
 		try {
-			const response = await fetch(
-				"https://handy-sparkle-backend-2de7f358d4c0.herokuapp.com/send-quote",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(data),
-				}
-			);
+			const response = await fetch("", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
+			});
 
 			if (response.ok) {
 				showNotification(
