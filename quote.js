@@ -240,13 +240,6 @@ function calculateEstimate() {
 	// Display the personal details form
 
 	document.getElementById("estimateResult").style.display = "block";
-	// if (serviceType === "Regular cleaning") {
-	// 	document.getElementById("estimateResult").style.display = "block";
-	// 	document.getElementById("estimatedTotal").style.display = "none";
-	// } else if (serviceType === "One time cleaning") {
-	// 	document.getElementById("estimateResult").style.display = "block";
-	// 	document.getElementById("estimatedTotal").style.display = "block";
-	// }
 }
 
 document
