@@ -12,7 +12,7 @@ exports.handler = async (event) => {
 	// Allow CORS
 	const headers = {
 		"Access-Control-Allow-Origin": "*",
-		"Access-Control-Allow-Headers": "Content-Type",
+		"Access-Control-Allow-Headers": "content-type",
 	};
 
 	if (event.httpMethod === "OPTIONS") {
@@ -60,6 +60,9 @@ exports.handler = async (event) => {
 		specialRequest,
 	} = body;
 
+	var durationHour = Math.floor(duration);
+	var durationMinute = Math.round((duration % 1) * 60);
+
 	const subject = `Website Booking Request | ${customerName} | ${customerPhone} | ${serviceDate}`;
 	const text = `
 Booking Details:
@@ -72,7 +75,7 @@ Booking Details:
 - Date of Service: ${serviceDate}
 
 Quote Details:
-- Estimated Duration: ${duration} hours / ${duration * 60} minutes
+- Estimated Duration: ${durationHour} hours ${durationMinute} minutes
 - Estimated Total: AU$${total}
 - Estimated Rate: AU$${rate} per hour
 

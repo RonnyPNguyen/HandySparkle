@@ -260,16 +260,19 @@ document
 		formData.forEach((value, key) => {
 			data[key] = value;
 		});
+		console.log(JSON.stringify(data));
 
 		try {
-			const response = await fetch("", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(data),
-			});
-
+			const response = await fetch(
+				"https://f2k308ynu4.execute-api.ap-southeast-2.amazonaws.com/default/HandySparkle-sendQuoteConfirmation",
+				{
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify(data),
+				}
+			);
 			if (response.ok) {
 				showNotification(
 					"Quote request sent successfully. We will be in touch soon!",
