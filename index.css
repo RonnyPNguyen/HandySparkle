@@ -95,7 +95,7 @@ button {
 
 .main-banner {
 	height: 1024px;
-	background-image: url("main_banner.png");
+	background-image: url("public/main_banner.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -181,15 +181,14 @@ button {
 	text-decoration: none;
 	border: solid 3px var(--text-color);
 	border-radius: 20px;
-	transition: 0.2s;
+	transition: 300ms;
 }
 
 .get-quote-btn:hover,
 .get-contact-btn:hover {
 	background-color: var(--text-color);
 	color: var(--main-color);
-	text-decoration: underline;
-	font-size: 30px;
+	font-size: 26px;
 }
 
 .action-button a {
@@ -367,6 +366,6 @@ button {
 	}
 
 	#estimateResult h3 {
-		font-size: 14px;
+		font-size: 20px;
 	}
 }

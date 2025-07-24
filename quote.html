@@ -18,14 +18,14 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Handy Sparkle</title>
-		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="public/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
 		<div class="nav-bar">
 			<div class="logo-container">
 				<a href="index.html">
-					<img src="logo.svg" alt="Handy Sparkle Logo" />
+					<img src="public/logo.svg" alt="Handy Sparkle Logo" />
 				</a>
 				<a href="index.html">
 					<h1>Handy Sparkle</h1>
@@ -50,10 +50,16 @@
 			>
 				<div class="form-group">
 					<label for="serviceType">Type of Service:</label>
-					<select id="serviceType" name="serviceType" required>
+					<select
+						id="serviceType"
+						name="serviceType"
+						required
+						style="padding: 8px"
+						onchange="updateQuoteForm()"
+					>
 						<option value="" disabled selected>Select a service</option>
 						<option value="One Time Cleaning">One time cleaning</option>
-						<option value="Deep Cleaning">One time cleaning</option>
+						<option value="Deep Cleaning">Deep cleaning</option>
 						<option value="End Of Lease Cleaning">End of Lease Cleaning</option>
 						<option value="New Opening House/Office Cleaning">
 							New Opening House/Office
@@ -61,72 +67,121 @@
 						<option value="regularCleaning">Regular Cleaning</option>
 					</select>
 				</div>
-				<div class="form-group">
-					<label for="bedrooms">Number of Bedrooms (or Office Rooms):</label>
-					<input
-						type="number"
-						class="form-control"
-						id="bedrooms"
-						min="0"
-						required
-					/>
+				<div id="exception" style="display: none">
+					<div class="alert alert-warning p-4" role="alert">
+						<h5 class="mb-2">
+							<strong>Regular Cleaning Service is not available</strong>
+						</h5>
+						<p class="mt-3">
+							If this is your first time with us, please select one of our other
+							services. Please refer to our
+							<a href="/terms-and-conditions" target="_blank"
+								>Terms and Conditions</a
+							>
+							before booking.
+						</p>
+						<p>
+							Our <strong>Regular Cleaning</strong> service is only available to
+							verified customers who has done at least
+							<strong>3 sessions</strong> with us. This plan ensures consistent
+							care, peace of mind, and access to priority booking.
+						</p>
+
+						<ul style="list-style-type: none; padding-left: 20px">
+							<li>✅ Discounted rate on each visit</li>
+							<li>✅ Flexible scheduling that suits your routine</li>
+							<li>✅ Personalized care for your home or workspace</li>
+						</ul>
+
+						<p class="mb-2">
+							If you're a returning or verified customer, we’d love to offer a
+							tailored quote just for you!
+						</p>
+						<p>
+							📞 <strong>Call us directly at</strong>
+							<a href="tel:0404 761 666">0404 761 666</a><br />
+							📧 <strong>Or email</strong>:
+							<a href="mailto:handysparkle.au@gmail.com"
+								>handysparkle.au@gmail.com</a
+							>
+						</p>
+
+						<p class="text-muted mb-0">
+							We’re grateful for our loyal customers – your trust keeps us
+							shining!
+						</p>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="bathrooms">Number of Bathrooms:</label>
-					<input
-						type="number"
-						class="form-control"
-						id="bathrooms"
-						min="0"
-						required
-					/>
+
+				<div id="normalForm" class="alert alert-info p-4 rounded">
+					<div class="form-group">
+						<label for="bedrooms">Number of Bedrooms (or Office Rooms):</label>
+						<input
+							type="number"
+							class="form-control"
+							id="bedrooms"
+							min="0"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="bathrooms">Number of Bathrooms:</label>
+						<input
+							type="number"
+							class="form-control"
+							id="bathrooms"
+							min="0"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="kitchens">Number of Kitchens:</label>
+						<input
+							type="number"
+							class="form-control"
+							id="kitchens"
+							min="0"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="livingRooms"
+							>Number of Living Rooms (or Coworking Space):</label
+						>
+						<input
+							type="number"
+							class="form-control"
+							id="livingRooms"
+							min="0"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="floors">Number of Floors:</label>
+						<input
+							type="number"
+							class="form-control"
+							id="floors"
+							min="1"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="serviceDate">Date of Service:</label>
+						<input type="date" class="form-control" id="serviceDate" required />
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="kitchens">Number of Kitchens:</label>
-					<input
-						type="number"
-						class="form-control"
-						id="kitchens"
-						min="0"
-						required
-					/>
+				<div class="text-center mt-4">
+					<button type="submit" class="btn btn-primary">Instant Quote</button>
 				</div>
-				<div class="form-group">
-					<label for="livingRooms"
-						>Number of Living Rooms (or Coworking Space):</label
-					>
-					<input
-						type="number"
-						class="form-control"
-						id="livingRooms"
-						min="0"
-						required
-					/>
-				</div>
-				<div class="form-group">
-					<label for="floors">Number of Floors:</label>
-					<input
-						type="number"
-						class="form-control"
-						id="floors"
-						min="1"
-						required
-					/>
-				</div>
-				<div class="form-group">
-					<label for="serviceDate">Date of Service:</label>
-					<input type="date" class="form-control" id="serviceDate" required />
-				</div>
-				<button type="submit" class="btn btn-primary">Instant Quote</button>
 			</form>
 
 			<!-- Estimate Result and Personal Details Form -->
 			<div id="estimateResult" class="mt-4" style="display: none">
 				<h3>Selected Service: <span id="service"></span></h3>
-				<h3 id="estimatedTotal">
-					Estimated Total: <span id="total"></span> and Duration:
-					<span id="duration"></span>
-				</h3>
+				<h3>Estimated Total: <span id="total"></span></h3>
+				<h3>Duration: <span id="duration"></span></h3>
+				<br />
 				<!-- <h3>Estimated Rate: <span id="rate"></span></h3> -->
 				<form id="bookingForm">
 					<!-- Hidden fields for cleaning details -->
@@ -187,32 +242,32 @@
 							I agree to the terms and conditions
 						</label>
 					</div> -->
-					<button type="submit" class="btn btn-success">
-						Secure Your Quote
-					</button>
+					<div class="text-center mt-4">
+						<button type="submit" class="btn btn-success">
+							Secure Your Quote
+						</button>
+					</div>
 				</form>
 				<br />
 				<div id="notification" style="display: none" class="alert"></div>
 				<br />
 			</div>
 		</div>
-
 		<script src="quote.js"></script>
-
 		<br />
 		<h1 class="section-heading">Our Services</h1>
 		<br />
 		<div class="service-container">
 			<div class="service">
-				<img src="house-cleaning.jpg" alt="House Keeping" />
+				<img src="public/house-cleaning.jpg" alt="House Keeping" />
 				<h2>House Keeping</h2>
 			</div>
 			<div class="service">
-				<img src="end-of-lease.jpg" alt="End of Lease" />
+				<img src="public/end-of-lease.jpg" alt="End of Lease" />
 				<h2>End of Lease</h2>
 			</div>
 			<div class="service">
-				<img src="office-clean.webp" alt="Office Cleaning" />
+				<img src="public/office-clean.webp" alt="Office Cleaning" />
 				<h2>Office</h2>
 			</div>
 		</div>

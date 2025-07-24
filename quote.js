@@ -87,6 +87,20 @@ var newOpeningRate = {
 	},
 };
 
+function updateQuoteForm() {
+	const serviceType = document.getElementById("serviceType").value;
+	const exceptionDiv = document.getElementById("exception");
+	const normalFormDiv = document.getElementById("normalForm");
+
+	if (serviceType === "regularCleaning") {
+		exceptionDiv.style.display = "block";
+		normalFormDiv.style.display = "none";
+	} else {
+		exceptionDiv.style.display = "none";
+		normalFormDiv.style.display = "block";
+	}
+}
+
 function calculateEstimate() {
 	const serviceTypeElement = document.getElementById("serviceType");
 	const serviceType = serviceTypeElement.value;
@@ -227,7 +241,6 @@ function calculateEstimate() {
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
-
 	document.getElementById("serviceTypeValue").value = serviceType;
 	document.getElementById("bedroomsValue").value = bedrooms;
 	document.getElementById("bathroomsValue").value = bathrooms;
@@ -236,8 +249,6 @@ function calculateEstimate() {
 	document.getElementById("floorsValue").value = floors;
 	document.getElementById("serviceDateValue").value =
 		document.getElementById("serviceDate").value;
-
-	// Display the personal details form
 
 	document.getElementById("estimateResult").style.display = "block";
 }
