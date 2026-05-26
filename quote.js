@@ -233,10 +233,12 @@ function calculateEstimate() {
 	rate = Math.round(rate * 100) / 100;
 	var durationHour = Math.floor(duration / 60);
 	var durationMinute = Math.round((duration % 60) * 100) / 100;
+	// Estimated quote display
 	document.getElementById("service").textContent = serviceType;
-	document.getElementById("total").textContent = `AU$${total}`;
+	// document.getElementById("total").textContent = `AU$${total}`;
 	document.getElementById("duration").textContent =
 		`${durationHour} Hours and ${durationMinute} Minutes`;
+	// Send info to lambda function
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
@@ -278,7 +280,7 @@ document
 			);
 			if (response.ok) {
 				showNotification(
-					"Quote request sent successfully. We will be in touch soon!",
+					"Quote request sent successfully. We will send the estimated quote through your email soon!",
 					"success",
 				);
 			} else {

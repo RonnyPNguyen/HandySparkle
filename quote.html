@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<!-- Google tag (gtag.js) -->
@@ -46,7 +46,10 @@
 			<!-- Cleaning Details Form -->
 			<form
 				id="quoteForm"
-				onsubmit="event.preventDefault(); calculateEstimate();"
+				onsubmit="
+					event.preventDefault();
+					calculateEstimate();
+				"
 			>
 				<div class="form-group">
 					<label for="serviceType">Type of Service:</label>
@@ -173,15 +176,17 @@
 					</div>
 				</div>
 				<div class="text-center mt-4">
-					<button type="submit" class="btn btn-primary">Instant Quote</button>
+					<button type="submit" class="btn btn-primary">
+						Submit you details
+					</button>
 				</div>
 			</form>
 
 			<!-- Estimate Result and Personal Details Form -->
 			<div id="estimateResult" class="mt-4" style="display: none">
 				<h3>Selected Service: <span id="service"></span></h3>
-				<h3>Estimated Total: <span id="total"></span></h3>
-				<h3>Duration: <span id="duration"></span></h3>
+				<!-- <h3>Estimated Total: <span id="total"></span></h3> -->
+				<h3>EstimatedDuration: <span id="duration"></span></h3>
 				<br />
 				<!-- <h3>Estimated Rate: <span id="rate"></span></h3> -->
 				<form id="bookingForm">
@@ -244,9 +249,7 @@
 						</label>
 					</div> -->
 					<div class="text-center mt-4">
-						<button type="submit" class="btn btn-success">
-							Secure Your Quote
-						</button>
+						<button type="submit" class="btn btn-success">Get My Quote</button>
 					</div>
 				</form>
 				<br />
