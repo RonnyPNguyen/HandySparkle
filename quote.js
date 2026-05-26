@@ -235,9 +235,8 @@ function calculateEstimate() {
 	var durationMinute = Math.round((duration % 60) * 100) / 100;
 	document.getElementById("service").textContent = serviceType;
 	document.getElementById("total").textContent = `AU$${total}`;
-	document.getElementById(
-		"duration"
-	).textContent = `${durationHour} Hours and ${durationMinute} Minutes`;
+	document.getElementById("duration").textContent =
+		`${durationHour} Hours and ${durationMinute} Minutes`;
 	document.getElementById("totalValue").value = total;
 	document.getElementById("durationValue").value = duration;
 	document.getElementById("rateValue").value = rate;
@@ -275,24 +274,24 @@ document
 						"content-type": "application/json",
 					},
 					body: JSON.stringify(data),
-				}
+				},
 			);
 			if (response.ok) {
 				showNotification(
 					"Quote request sent successfully. We will be in touch soon!",
-					"success"
+					"success",
 				);
 			} else {
 				showNotification(
 					"Failed to send quote request. Please try again.",
-					"danger"
+					"danger",
 				);
 			}
 		} catch (error) {
 			console.error("Error:", error);
 			showNotification(
 				"Failed to send quote request. Please try again.",
-				"danger"
+				"danger",
 			);
 			document
 				.getElementById("contactButton")
@@ -308,3 +307,5 @@ function showNotification(message, type) {
 	notification.className = `alert alert-${type}`;
 	notification.style.display = "block";
 }
+
+// Copyright 2024 Ronny Nguyen - All Rights Reserved. Handy Sparkle Cleaning Services.

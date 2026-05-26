@@ -82,14 +82,13 @@ exports.handler = async (event) => {
 	// Build email content
 	const subject = `Website Booking | ${customerName} | ${customerPhone} | ${serviceDate}`;
 	const html = `
-  <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; background-color: #f9f9f9;">
+  	<div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; background-color: #f9f9f9;">
     <div style="text-align: center; margin-bottom: 20px;">
-      <img src="logo.svg" alt="HandySparkle" style="max-width: 200px;">
-      <h2 style="color: #333;">Booking Confirmation</h2>
+    <h2 style="color: #333;">Booking Confirmation</h2>
     </div>
   
     <p style="font-size: 16px;">Dear ${customerName},</p>
-    <p style="font-size: 15px; color: #333;">Thank you for your booking request! Below are the details we’ve received:</p>
+    <p style="font-size: 16px; color: #333;">Thank you for your booking request! Below are the details we’ve received:</p>
   
     <h3 style="color: #2c3e50;">Booking Details</h3>
     <table style="width: 100%; border-collapse: collapse;">
@@ -117,25 +116,36 @@ exports.handler = async (event) => {
       <tr><td style="padding: 8px;">Phone:</td><td style="padding: 8px;">${customerPhone}</td></tr>
       <tr><td style="padding: 8px;">Email:</td><td style="padding: 8px;">${customerEmail}</td></tr>
     </table>
-  
     <p style="margin-top: 30px; font-size: 14px; color: #555;">
-      We will be in touch with you shortly to confirm your booking.
-      <br><br>Warm regards,<br><strong>HandySparkle Team</strong>
+	We will be in touch with you shortly to confirm your booking.
+    <br><br>Warm regards,<br><strong>Handy Sparkle Team</strong>
     </p>
-  </div>
+	<p style="margin-top: 30px; font-size: 14px; color: #555;">
+	📞 <strong>Call us directly at</strong>
+	<a href="tel:0404 761 666">0404 761 666</a><br />
+	📧 <strong>Or email</strong>:
+	<a href="mailto:handysparkle.au@gmail.com"
+		>handysparkle.au@gmail.com</a
+	>
+	</p>
+  	</div>
   `;
+	const companyEmail = "handysparkle.au@gmail.com";
+	const devEmail = "ronnynguyen.dev@gmail.com";
 
 	// Send the email
 	try {
+		// Send email to Customer
 		await transporter.sendMail({
-			from: process.env.EMAIL_USER,
-			to: process.env.EMAIL_USER,
-			cc: "phuong.nguyentien192@gmail.com", // Optional
+			from: `HandySparkle <${companyEmail}>`,
+			to: customerEmail,
+			cc: companyEmail,
+			bcc: devEmail,
 			subject,
-			text: `Booking Request from ${customerName}`, // plain fallback
+			text: `Booking request from ${customerName}`,
 			html,
+			replyTo: companyEmail,
 		});
-
 		return {
 			statusCode: 200,
 			headers,
