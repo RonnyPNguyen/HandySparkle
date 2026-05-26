@@ -310,4 +310,4 @@ function showNotification(message, type) {
 	notification.style.display = "block";
 }
 
-// Copyright 2024 Ronny Nguyen - All Rights Reserved. Handy Sparkle Cleaning Services.
+// Copyright 2024 Ronny Nguyen for Handy Sparkle Cleaning Services - All Rights Reserved.
